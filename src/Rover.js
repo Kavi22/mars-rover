@@ -1,7 +1,8 @@
 
 class Rover  {
-  constructor() {
-    console.log("I'm in the drone!");
+  constructor(xPosition, yPosition) {
+   this.x = xPosition,
+   this.y = yPosition;
   }
 
 }
