@@ -3,7 +3,6 @@ const Rover = require('../src/Rover');
 
 describe('Rover', () => {
   it('is a function ', () => {
-    console.log(typeof Rover);
     expect(Rover).to.be.a('function');
   });
   it('creates an instance', () => {
