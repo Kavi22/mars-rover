@@ -10,9 +10,10 @@ describe('Rover', () => {
     expect(rover1).to.be.an.instanceof(Rover);
   });
     it('should set starting location', () => {
-        let rover1 = new Rover(1, 5);
-        expect(rover1.x).to.equal(1);
-        expect(rover1.y).to.equal(5);
+        let rover1 = new Rover(1, 5, 'S');
+        expect(rover1.xPosition).to.equal(1);
+        expect(rover1.yPosition).to.equal(5);
+        expect(rover1.direction).to.equal('S');
   });
 
 });

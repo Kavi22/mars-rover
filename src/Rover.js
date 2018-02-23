@@ -1,8 +1,9 @@
 
 class Rover  {
-  constructor(xPosition, yPosition) {
-   this.x = xPosition,
-   this.y = yPosition;
+  constructor(xPosition, yPosition, direction) {
+   this.xPosition = xPosition,
+   this.yPosition = yPosition,
+   this.direction = direction;
   }
 
 }
