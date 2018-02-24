@@ -24,4 +24,32 @@ describe('Rover', () => {
     expect(rover1.commands).to.eql(['L', 'M', 'L', 'M', 'L', 'M']);
   });
 
+  describe('should set new co-ordinates when instructed to move', () => {
+    it('should increment Y position  if currently facing North', () => {
+      let rover1 = new Rover(1, 5, 'N');
+      rover1.splitCommandline('MM');
+      rover1.moveOrTurn();
+      expect(rover1.yPosition).to.equal(7);
+    });
+    it('should increment X position  if currently facing East', () => {
+      let rover1 = new Rover(1, 3, 'E');
+      rover1.splitCommandline('MMM');
+      rover1.moveOrTurn();
+      expect(rover1.xPosition).to.equal(4);
+    });
+    it('should increment Y position  if currently facing South', () => {
+      let rover1 = new Rover(1, 4, 'S');
+      rover1.splitCommandline('MMM');
+      rover1.moveOrTurn();
+      expect(rover1.yPosition).to.equal(1);
+    });
+    it('should increment X position  if currently facing West', () => {
+      let rover1 = new Rover(5, 2, 'W');
+      rover1.splitCommandline('MM');
+      rover1.moveOrTurn();
+      expect(rover1.xPosition).to.equal(3);
+    });
+
+  });
+
 });
