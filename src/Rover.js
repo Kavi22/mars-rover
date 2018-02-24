@@ -15,15 +15,30 @@ class Rover {
         if (this.direction === 'N') {
           this.yPosition += 1;
         }
-        if (this.direction === 'E') {
+        else if (this.direction === 'E') {
           this.xPosition += 1;
         }
-        if (this.direction === 'S') {
+        else if (this.direction === 'S') {
           this.yPosition -= 1;
         }
-        if (this.direction === 'W') {
+        else if (this.direction === 'W') {
           this.xPosition -= 1;
         }
+      }
+      if (command === 'L') {
+        if (this.direction === 'N') {
+          this.direction = 'W';
+        }
+        else if (this.direction === 'E') {
+          this.direction = 'N';
+        }
+        else if (this.direction === 'S') {
+          this.direction = 'E';
+        }
+        else if (this.direction === 'W') {
+          this.direction = 'S';
+        }
+        
       }
 
     });
