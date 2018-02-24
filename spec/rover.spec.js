@@ -106,7 +106,16 @@ describe('Rover', () => {
       rover1.moveOrTurn();
       expect(rover1.direction).to.equal('E');
     });
-
+  });
+  describe('should move and  turn accordingly', () => {
+    it('turns according to the commands it receives', () => {
+      let rover1 = new Rover(1, 2, 'N');
+      rover1.splitCommandline('LMLMLMLMM');
+      rover1.moveOrTurn();
+      expect(rover1.direction).to.equal('N');
+      expect(rover1.xPosition).to.equal(1);
+      expect(rover1.yPosition).to.equal(3);
+    });
   });
 
 });

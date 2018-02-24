@@ -58,7 +58,7 @@ class Rover {
       this.direction = 'N';
     }
   }
-
+  
 }
 
 module.exports = Rover;
