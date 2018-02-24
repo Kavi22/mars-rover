@@ -118,4 +118,15 @@ describe('Rover', () => {
     });
   });
 
+  describe.only('output', () => {
+    it('gets the correct current position of rover', () => {
+      let rover1 = new Rover(1, 2, 'N');
+      rover1.splitCommandline('LMLMLMLMM');
+      rover1.moveOrTurn();
+      let result = rover1.getPosition();
+      expect(result).to.eql([1,3,'N']);
+
+    });
+  });
+
 });

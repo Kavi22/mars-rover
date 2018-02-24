@@ -58,6 +58,10 @@ class Rover {
       this.direction = 'N';
     }
   }
+
+  getPosition() {
+   return [this.xPosition, this.yPosition, this.direction];
+  }
   
 }
 
