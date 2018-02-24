@@ -76,6 +76,30 @@ describe('Rover', () => {
       rover1.moveOrTurn();
       expect(rover1.direction).to.equal('S');
     });
+    it('should change the direction from N to E when command is R', () => {
+      let rover1 = new Rover(1, 3, 'N');
+      rover1.splitCommandline('R');
+      rover1.moveOrTurn();
+      expect(rover1.direction).to.equal('E');
+    });
+    it('should change the direction from E to S when command is R', () => {
+      let rover1 = new Rover(1, 3, 'E');
+      rover1.splitCommandline('R');
+      rover1.moveOrTurn();
+      expect(rover1.direction).to.equal('S');
+    });
+    it('should change the direction from S to E when command is R', () => {
+      let rover1 = new Rover(1, 3, 'S');
+      rover1.splitCommandline('R');
+      rover1.moveOrTurn();
+      expect(rover1.direction).to.equal('W');
+    });
+    it('should change the direction from W to S when command is R', () => {
+      let rover1 = new Rover(1, 3, 'W');
+      rover1.splitCommandline('R');
+      rover1.moveOrTurn();
+      expect(rover1.direction).to.equal('N');
+    });
 
   });
 

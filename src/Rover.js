@@ -38,6 +38,21 @@ class Rover {
         else if (this.direction === 'W') {
           this.direction = 'S';
         }
+      }
+
+      if (command === 'R') {
+        if (this.direction === 'N') {
+          this.direction = 'E';
+        }
+        else if (this.direction === 'E') {
+          this.direction = 'S';
+        }
+        else if (this.direction === 'S') {
+          this.direction = 'W';
+        }
+        else if (this.direction === 'W') {
+          this.direction = 'N';
+        }
         
       }
 
