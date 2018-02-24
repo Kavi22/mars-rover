@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
 const Plateau = require('../src/Plateau');
 
-describe.only('Rover', () => {
+describe('Plateau', () => {
   it('is a function ', () => {
     expect(Plateau).to.be.a('function');
   });
