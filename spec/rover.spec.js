@@ -100,6 +100,12 @@ describe('Rover', () => {
       rover1.moveOrTurn();
       expect(rover1.direction).to.equal('N');
     });
+    it('should change the direction according to commands', () => {
+      let rover1 = new Rover(1, 3, 'N');
+      rover1.splitCommandline('RRL');
+      rover1.moveOrTurn();
+      expect(rover1.direction).to.equal('E');
+    });
 
   });
 

@@ -53,9 +53,7 @@ class Rover {
         else if (this.direction === 'W') {
           this.direction = 'N';
         }
-        
       }
-
     });
   }
 
