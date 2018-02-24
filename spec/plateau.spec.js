@@ -10,12 +10,12 @@ describe('Plateau', () => {
     let plateau1 = new Plateau();
     expect(plateau1).to.be.an.instanceof(Plateau);
   });
-  it('should set plateau size', () => {
+  it('sets plateau size', () => {
     let plateau1 = new Plateau(5, 5);
     expect(plateau1.width).to.equal(5);
     expect(plateau1.height).to.equal(5);
   });
-  it('should add a rover to the plateau', () => {
+  it('adds a rover to the plateau', () => {
     let plateau1 = new Plateau(5, 5);
     plateau1.addRover(2, 2, 'E');
     expect(plateau1.rovers.length).to.equal(1);
@@ -23,14 +23,14 @@ describe('Plateau', () => {
     expect(plateau1.rovers[0]).to.be.an('Object');
   });
 
-  it('should add mulitple rovers to the plateau', () => {
+  it('adds mulitple rovers to the plateau', () => {
     let plateau1 = new Plateau(5, 5);
     plateau1.addRover(2, 2, 'E');
     plateau1.addRover(5, 1, 'W');
     expect(plateau1.rovers.length).to.equal(2);
   });
 
-  it.only('prints out the final positions of all rovers', () => {
+  it('prints out the final positions of all rovers', () => {
     // const spy = sinon.spy(console.log);
     let plateau1 = new Plateau(5, 5);
     plateau1.addRover(2, 2, 'E');
