@@ -12,49 +12,51 @@ class Rover {
   moveOrTurn() {
     this.commands.forEach(command => {
       if (command === 'M') {
-        if (this.direction === 'N') {
-          this.yPosition += 1;
-        }
-        else if (this.direction === 'E') {
-          this.xPosition += 1;
-        }
-        else if (this.direction === 'S') {
-          this.yPosition -= 1;
-        }
-        else if (this.direction === 'W') {
-          this.xPosition -= 1;
-        }
+        this.move();
       }
-      if (command === 'L') {
-        if (this.direction === 'N') {
-          this.direction = 'W';
-        }
-        else if (this.direction === 'E') {
-          this.direction = 'N';
-        }
-        else if (this.direction === 'S') {
-          this.direction = 'E';
-        }
-        else if (this.direction === 'W') {
-          this.direction = 'S';
-        }
+      else if (command === 'L') {
+        this.turnLeft();
       }
-
-      if (command === 'R') {
-        if (this.direction === 'N') {
-          this.direction = 'E';
-        }
-        else if (this.direction === 'E') {
-          this.direction = 'S';
-        }
-        else if (this.direction === 'S') {
-          this.direction = 'W';
-        }
-        else if (this.direction === 'W') {
-          this.direction = 'N';
-        }
+      else if (command === 'R') {
+        this.turnRight();
       }
     });
+  }
+
+  move() {
+    if (this.direction === 'N') {
+      this.yPosition += 1;
+    } else if (this.direction === 'E') {
+      this.xPosition += 1;
+    } else if (this.direction === 'S') {
+      this.yPosition -= 1;
+    } else if (this.direction === 'W') {
+      this.xPosition -= 1;
+    }
+  }
+
+  turnLeft() {
+    if (this.direction === 'N') {
+      this.direction = 'W';
+    } else if (this.direction === 'E') {
+      this.direction = 'N';
+    } else if (this.direction === 'S') {
+      this.direction = 'E';
+    } else if (this.direction === 'W') {
+      this.direction = 'S';
+    }
+  }
+
+  turnRight() {
+    if (this.direction === 'N') {
+      this.direction = 'E';
+    } else if (this.direction === 'E') {
+      this.direction = 'S';
+    } else if (this.direction === 'S') {
+      this.direction = 'W';
+    } else if (this.direction === 'W') {
+      this.direction = 'N';
+    }
   }
 
 }
