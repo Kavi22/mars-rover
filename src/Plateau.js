@@ -12,6 +12,13 @@ class Plateau  {
     this.rovers.push(newRover);
   }
 
+  get allRoverPositions() {
+    this.rovers.forEach((rover) => {
+      console.log(rover.positions.join(' '));
+    });
+  
+  }
+
 }
 
 module.exports = Plateau;
