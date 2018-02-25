@@ -11,11 +11,20 @@ describe('Rover', () => {
     expect(rover1).to.be.an.instanceof(Rover);
   });
 
-  it('sets the rovers starting location', () => {
-    let rover1 = new Rover(1, 5, 'S');
-    expect(rover1.xPosition).to.equal(1);
-    expect(rover1.yPosition).to.equal(5);
-    expect(rover1.direction).to.equal('S');
+  describe('manages position', () => {
+    it('sets the rovers starting location', () => {
+      let rover1 = new Rover(1, 5, 'S');
+      expect(rover1.xPosition).to.equal(1);
+      expect(rover1.yPosition).to.equal(5);
+      expect(rover1.direction).to.equal('S');
+    });
+  
+    it('sets the rovers position to 0,0,N if not specified', () => {
+      let rover1 = new Rover();
+      expect(rover1.xPosition).to.equal(0);
+      expect(rover1.yPosition).to.equal(0);
+      expect(rover1.direction).to.equal('N');
+    });
   });
 
   it('receives a set of commands and stores this', () => {
@@ -107,6 +116,7 @@ describe('Rover', () => {
       expect(rover1.direction).to.equal('E');
     });
   });
+  
   describe('moves and turns accordingly', () => {
     it('turns according to the commands it receives', () => {
       let rover1 = new Rover(1, 2, 'N');
@@ -124,7 +134,7 @@ describe('Rover', () => {
       rover1.splitCommandline('LMLMLMLMM');
       rover1.moveOrTurn();
       let result = rover1.positions;
-      expect(result).to.eql([1,3,'N']);
+      expect(result).to.eql([1, 3, 'N']);
     });
   });
 
