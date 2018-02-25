@@ -44,7 +44,7 @@ describe('Plateau', () => {
     let plateau1 = new Plateau(5, 5);
     plateau1.addRover(2, 2, 'E');
     plateau1.sendCommands('MMLRL');
-    expect(plateau1.rovers[0].commands).to.eql(['M', 'M', 'L', 'R', 'L']);
+    expect(plateau1.rovers[0].commands).to.equal('MMLRL');
   });
 
   it('instructs the rover to carry out the commands', () => {

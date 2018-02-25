@@ -6,11 +6,11 @@ class Rover {
   }
 
   saveCommands(commands) {
-    this.commands = commands.split('');
+    this.commands = commands;
   }
 
   moveOrTurn() {
-    this.commands.forEach(command => {
+    this.commands.split('').forEach(command => {
       if (command === 'M') {
         this.move();
       } else if (command === 'L') {
@@ -55,6 +55,10 @@ class Rover {
     } else if (this.direction === 'W') {
       this.direction = 'N';
     }
+  }
+
+  boundryCheck() {
+
   }
 
   get positions() {

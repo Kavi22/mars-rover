@@ -30,7 +30,7 @@ describe('Rover', () => {
   it('receives a set of commands and stores this on the rover', () => {
     let rover1 = new Rover(1, 5, 'S');
     rover1.saveCommands('LMLMLM');
-    expect(rover1.commands).to.eql(['L', 'M', 'L', 'M', 'L', 'M']);
+    expect(rover1.commands).to.equal('LMLMLM');
   });
 
   describe('sets new co-ordinates when instructed to move', () => {
