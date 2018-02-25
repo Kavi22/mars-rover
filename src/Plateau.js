@@ -14,14 +14,15 @@ class Plateau  {
     this.rovers.push(newRover);
   }
 
+  sendCommands(commands) {
+    this.rovers[this.rovers.length - 1].saveCommands(commands);
+    this.rovers[this.rovers.length - 1].moveOrTurn();
+  }
+
   get allRoverPositions() {
     this.rovers.forEach((rover) => {
       console.log(rover.positions.join(' '));
     });
-  }
-
-  sendCommands(commands) {
-    this.rovers[this.rovers.length - 1].saveCommands(commands);
   }
 
 }

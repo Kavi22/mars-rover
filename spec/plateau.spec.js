@@ -47,11 +47,22 @@ describe('Plateau', () => {
     expect(plateau1.rovers[0].commands).to.eql(['M', 'M', 'L', 'R', 'L']);
   });
 
+  it('instructs the rover to carry out the commands', () => {
+    let plateau1 = new Plateau(5, 5);
+    plateau1.addRover(2, 2, 'E');
+    plateau1.sendCommands('MMLRL');
+    expect(plateau1.rovers[0].xPosition).to.equal(4);
+    expect(plateau1.rovers[0].yPosition).to.equal(2);
+    expect(plateau1.rovers[0].direction).to.equal('N');
+  });
+
   it('prints out the final positions of all rovers', () => {
     // const spy = sinon.spy(console.log);
     let plateau1 = new Plateau(5, 5);
-    plateau1.addRover(2, 2, 'E');
-    plateau1.addRover(5, 1, 'W');
+    plateau1.addRover(1, 2, 'N');
+    plateau1.sendCommands('LMLMLMLMM');
+    plateau1.addRover(3,3,'E');
+    plateau1.sendCommands('MMRMMRMRRM');
     plateau1.allRoverPositions;
     // expect(spy.callCount).to.equal(2);
   });
