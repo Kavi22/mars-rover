@@ -40,6 +40,13 @@ describe('Plateau', () => {
     expect(plateau1.rovers[1].boundryX).to.equal(5);
   });
 
+  it('sends the commands to the rover', () => {
+    let plateau1 = new Plateau(5, 5);
+    plateau1.addRover(2, 2, 'E');
+    plateau1.sendCommands('MMLRL');
+    expect(plateau1.rovers[0].commands).to.eql(['M', 'M', 'L', 'R', 'L']);
+  });
+
   it('prints out the final positions of all rovers', () => {
     // const spy = sinon.spy(console.log);
     let plateau1 = new Plateau(5, 5);

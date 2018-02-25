@@ -1,11 +1,11 @@
 class Rover {
   constructor(xPosition = 0, yPosition = 0, direction = 'N') {
-     this.xPosition = xPosition,
-      this.yPosition = yPosition,
-      this.direction = direction;
+    this.xPosition = xPosition,
+    this.yPosition = yPosition,
+    this.direction = direction;
   }
 
-  splitCommandline(commands) {
+  saveCommands(commands) {
     this.commands = commands.split('');
   }
 
@@ -13,11 +13,9 @@ class Rover {
     this.commands.forEach(command => {
       if (command === 'M') {
         this.move();
-      }
-      else if (command === 'L') {
+      } else if (command === 'L') {
         this.turnLeft();
-      }
-      else if (command === 'R') {
+      } else if (command === 'R') {
         this.turnRight();
       }
     });
@@ -60,9 +58,9 @@ class Rover {
   }
 
   get positions() {
-   return [this.xPosition, this.yPosition, this.direction];
+    return [this.xPosition, this.yPosition, this.direction];
   }
-  
+
 }
 
 module.exports = Rover;
