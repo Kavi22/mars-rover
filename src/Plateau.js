@@ -9,6 +9,8 @@ class Plateau  {
 
   addRover(xPosition, yPosition, direction) {
     const newRover = new Rover(xPosition, yPosition, direction);
+    newRover.boundryY = this.height;
+    newRover.boundryX = this.width;
     this.rovers.push(newRover);
   }
 

@@ -30,6 +30,16 @@ describe('Plateau', () => {
     expect(plateau1.rovers.length).to.equal(2);
   });
 
+  it('sets boundry properties on each rover', () => {
+    let plateau1 = new Plateau(5, 5);
+    plateau1.addRover(2, 2, 'E');
+    plateau1.addRover();
+    expect(plateau1.rovers[0].boundryY).to.equal(5);
+    expect(plateau1.rovers[0].boundryX).to.equal(5);
+    expect(plateau1.rovers[1].boundryY).to.equal(5);
+    expect(plateau1.rovers[1].boundryX).to.equal(5);
+  });
+
   it('prints out the final positions of all rovers', () => {
     // const spy = sinon.spy(console.log);
     let plateau1 = new Plateau(5, 5);
