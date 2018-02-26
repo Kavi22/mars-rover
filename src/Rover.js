@@ -1,8 +1,11 @@
+const DataError = require('./DataError');
+
 class Rover {
   constructor(xPosition = 0, yPosition = 0, direction = 'N') {
     this.xPosition = xPosition,
     this.yPosition = yPosition,
     this.direction = direction;
+    this.errors = [];
   }
 
   saveCommands(commands) {
@@ -17,6 +20,10 @@ class Rover {
         this.turnLeft();
       } else if (command === 'R') {
         this.turnRight();
+      } else {
+        let e = new DataError('Invalid command', command);
+        this.errors.push(e);
+        console.log(`${e.message}: ${e.data},  rover can not proceed!`);
       }
     });
   }
@@ -55,10 +62,6 @@ class Rover {
     } else if (this.direction === 'W') {
       this.direction = 'N';
     }
-  }
-
-  boundryCheck() {
-
   }
 
   get positions() {

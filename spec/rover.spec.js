@@ -1,5 +1,6 @@
 const expect = require('chai').expect;
 const Rover = require('../src/Rover');
+// const Plateau = require('../src/Plateau');
 
 describe('Rover', () => {
   it('is a function ', () => {
@@ -31,6 +32,13 @@ describe('Rover', () => {
     let rover1 = new Rover(1, 5, 'S');
     rover1.saveCommands('LMLMLM');
     expect(rover1.commands).to.equal('LMLMLM');
+  });
+
+  it('creates and saves an error if invalid commmand is passed', () => {
+    let rover1 = new Rover(1, 5, 'S');
+    rover1.saveCommands('S');
+    rover1.moveOrTurn();
+    expect(rover1.errors[0].data).to.equal('S');
   });
 
   describe('sets new co-ordinates when instructed to move', () => {
