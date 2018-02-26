@@ -1,5 +1,6 @@
 const expect = require('chai').expect;
 const Plateau = require('../src/Plateau');
+const Rover = require('../src/Rover');
 // const sinon = require('sinon');
 
 describe('Plateau', () => {
@@ -15,29 +16,36 @@ describe('Plateau', () => {
     expect(plateau1.width).to.equal(5);
     expect(plateau1.height).to.equal(5);
   });
-  it('adds a rover to the plateau', () => {
-    let plateau1 = new Plateau(5, 5);
-    plateau1.addRover(2, 2, 'E');
-    expect(plateau1.rovers.length).to.equal(1);
-    expect(plateau1.rovers).to.be.an('Array');
-    expect(plateau1.rovers[0]).to.be.an('Object');
+
+  describe('adds rovers', () => {
+    it('adds a rover to the plateau', () => {
+      let plateau1 = new Plateau(5, 5);
+      plateau1.addRover(2, 2, 'E');
+      expect(plateau1.rovers.length).to.equal(1);
+      expect(plateau1.rovers).to.be.an('Array');
+      expect(plateau1.rovers[0]).to.be.an('Object');
+    });
+    it('adds mulitple rovers to the plateau', () => {
+      let plateau1 = new Plateau(5, 5);
+      plateau1.addRover(2, 2, 'E');
+      plateau1.addRover(5, 1, 'W');
+      expect(plateau1.rovers.length).to.equal(2);
+    });
   });
 
-  it('adds mulitple rovers to the plateau', () => {
-    let plateau1 = new Plateau(5, 5);
-    plateau1.addRover(2, 2, 'E');
-    plateau1.addRover(5, 1, 'W');
-    expect(plateau1.rovers.length).to.equal(2);
-  });
-
-  it('sets boundry properties on each rover', () => {
-    let plateau1 = new Plateau(5, 5);
-    plateau1.addRover(2, 2, 'E');
-    plateau1.addRover();
-    expect(plateau1.rovers[0].boundryY).to.equal(5);
-    expect(plateau1.rovers[0].boundryX).to.equal(5);
-    expect(plateau1.rovers[1].boundryY).to.equal(5);
-    expect(plateau1.rovers[1].boundryX).to.equal(5);
+  describe('manages if rover co-ordinates are outside boundry',() => {
+    it("checkLandingPosition throws an error", () => {
+      let p = new Plateau(5,5);
+      let r = new Rover(5, 6);
+      const throwErrorWithRover = p.checkLandingPosition.bind(p,r);
+      expect(throwErrorWithRover).to.throw("Rover co-ordinates out of grid. Can not land");
+    });
+    it('will not land rover if co-ordinates are outside of boundry', () => {
+      let p = new Plateau(5,5);
+      p.addRover(6, 5, 'S');
+      expect(p.rovers.length).to.equal(1);
+      expect(p.rovers[0].errors.length).to.equal(1);
+    });
   });
 
   it('sends the commands to the rover', () => {

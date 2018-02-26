@@ -1,6 +1,5 @@
 const expect = require('chai').expect;
 const Rover = require('../src/Rover');
-// const Plateau = require('../src/Plateau');
 
 describe('Rover', () => {
   it('is a function ', () => {
@@ -66,6 +65,18 @@ describe('Rover', () => {
       rover1.moveOrTurn();
       expect(rover1.xPosition).to.equal(3);
     });
+    // it('does not move if it hits boundary on y axis', () => {
+    //   let p = new Plateau(5,5);
+    //   p.addRover(1, 5, 'N');
+    //   p.sendCommands('M');
+    //   expect(p.rovers[0].errors.length).to.equal(1);
+    // });
+    // it('does not move if hits boundary on x axis', () => {
+    //   let p = new Plateau(5,5);
+    //   p.addRover(5, 1, 'S');
+    //   p.sendCommands('MM');
+    //   expect(p.rovers[0].errors.length).to.equal(1);
+    // });
   });
 
   describe('changes the rovers direction according to instruction', () => {

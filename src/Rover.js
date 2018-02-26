@@ -12,10 +12,14 @@ class Rover {
     this.commands = commands;
   }
 
+  isAtBoundry(axis) {
+    return (this[`${axis}Position`] >= this[`boundry${axis.toUpperCase()}`]);
+  }
+
   moveOrTurn() {
     this.commands.split('').forEach(command => {
       if (command === 'M') {
-        this.move();
+        this.move(command);
       } else if (command === 'L') {
         this.turnLeft();
       } else if (command === 'R') {
@@ -28,15 +32,21 @@ class Rover {
     });
   }
 
+  sendBoundaryError(axis) {
+    let e = new DataError('Can not move further', this[`${axis}Position`]);
+    this.errors.push(e);
+    console.log(`${e.message}: Rover reached the boundary : ${e.data}`);
+  }
+
   move() {
     if (this.direction === 'N') {
-      this.yPosition += 1;
+      !this.isAtBoundry('y') ? this.yPosition += 1 : this.sendBoundaryError('y');
     } else if (this.direction === 'E') {
-      this.xPosition += 1;
+      !this.isAtBoundry('x') ? this.xPosition += 1 : this.sendBoundaryError('x');
     } else if (this.direction === 'S') {
-      this.yPosition -= 1;
+      !this.isAtBoundry('y') ? this.yPosition -= 1 : this.sendBoundaryError('y');
     } else if (this.direction === 'W') {
-      this.xPosition -= 1;
+      !this.isAtBoundry('x') ? this.xPosition -= 1 : this.sendBoundaryError('x');
     }
   }
 

@@ -1,32 +1,34 @@
 const Rover = require('./Rover');
-const DataError = require('./DataError');
 
 class Plateau {
   constructor(width, height) {
     this.width = width,
-      this.height = height,
-      this.rovers = [];
+    this.height = height,
+    this.rovers = [];
     this.errors = [];
   }
 
   addRover(xPosition, yPosition, direction) {
-      if (this.isInBoudary(xPosition, yPosition, direction)) {
-        const newRover = new Rover(xPosition, yPosition, direction);
-        newRover.boundryY = this.height;
-        newRover.boundryX = this.width;
-        this.rovers.push(newRover);
+    const newRover = new Rover(xPosition, yPosition, direction);
+    try {
+      this.checkLandingPosition(newRover);
+    }
+    catch (error) {
+      if (error.name === 'InvalidLandingPosition') {
+        newRover.errors.push(error);
       }
+    }
+    this.rovers.push(newRover);
   }
 
-  isInBoudary(xPosition, yPosition) {
-    let isInB = true;
-    if (xPosition > this.width || yPosition > this.height) {
-      let e = new DataError('Rover co-ordinates out of grid. Can not add', xPosition, yPosition);
-      this.errors.push(e);
-      console.log(`${e.message}: ${e.data}`);
-      isInB = false;
+  checkLandingPosition(rover) {
+    if (rover.xPosition > this.width || rover. yPosition > this.height) {
+      let e = new Error ('Rover co-ordinates out of grid. Can not land');
+      e.xPosition = rover.xPosition;
+      e.yPosition = rover.yPosition;
+      e.name = 'InvalidLandingPosition';
+      throw e;
     }
-    return isInB;
   }
 
   sendCommands(commands) {
