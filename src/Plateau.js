@@ -23,7 +23,7 @@ class Plateau {
 
   checkLandingPosition(rover) {
     if (rover.xPosition > this.width || rover. yPosition > this.height) {
-      let e = new Error ('Rover co-ordinates out of grid. Can not land');
+      let e = new Error ('Rover co-ordinates out of grid. Cannot land');
       e.xPosition = rover.xPosition;
       e.yPosition = rover.yPosition;
       e.name = 'InvalidLandingPosition';
@@ -32,8 +32,9 @@ class Plateau {
   }
 
   sendCommands(commands) {
-    this.rovers[this.rovers.length - 1].saveCommands(commands);
-    this.rovers[this.rovers.length - 1].moveOrTurn();
+  let currentRover = this.rovers[this.rovers.length - 1];
+   currentRover.saveCommands(commands);
+   currentRover.moveOrTurn();
   }
 
   get allRoverPositions() {
@@ -41,7 +42,6 @@ class Plateau {
       console.log(rover.positions.join(' '));
     });
   }
-
 }
 
 module.exports = Plateau;

@@ -34,11 +34,11 @@ describe('Plateau', () => {
   });
 
   describe('manages if rover co-ordinates are outside boundry',() => {
-    it("checkLandingPosition throws an error", () => {
+    it('checkLandingPosition throws an error', () => {
       let p = new Plateau(5,5);
       let r = new Rover(5, 6);
       const throwErrorWithRover = p.checkLandingPosition.bind(p,r);
-      expect(throwErrorWithRover).to.throw("Rover co-ordinates out of grid. Can not land");
+      expect(throwErrorWithRover).to.throw('Rover co-ordinates out of grid. Cannot land');
     });
     it('will not land rover if co-ordinates are outside of boundry', () => {
       let p = new Plateau(5,5);

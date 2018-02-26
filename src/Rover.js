@@ -1,55 +1,48 @@
-const DataError = require('./DataError');
-
 class Rover {
+  // sets  the position and direction of the rover
   constructor(xPosition = 0, yPosition = 0, direction = 'N') {
     this.xPosition = xPosition,
     this.yPosition = yPosition,
     this.direction = direction;
     this.errors = [];
   }
-
+// adds the commands to the rover
   saveCommands(commands) {
     this.commands = commands;
   }
 
-  isAtBoundry(axis) {
-    return (this[`${axis}Position`] >= this[`boundry${axis.toUpperCase()}`]);
-  }
-
+  // 
   moveOrTurn() {
     this.commands.split('').forEach(command => {
       if (command === 'M') {
-        this.move(command);
+        this.move();
       } else if (command === 'L') {
         this.turnLeft();
       } else if (command === 'R') {
         this.turnRight();
       } else {
-        let e = new DataError('Invalid command', command);
-        this.errors.push(e);
-        console.log(`${e.message}: ${e.data},  rover can not proceed!`);
+        console.log('InvalidCommand rover can not proceed!');
+        let e = new Error ('Invalid command');
+        e.command = command;
+        e.name = 'InvalidCommand';
+        throw e;
       }
     });
   }
 
-  sendBoundaryError(axis) {
-    let e = new DataError('Can not move further', this[`${axis}Position`]);
-    this.errors.push(e);
-    console.log(`${e.message}: Rover reached the boundary : ${e.data}`);
-  }
-
   move() {
     if (this.direction === 'N') {
-      !this.isAtBoundry('y') ? this.yPosition += 1 : this.sendBoundaryError('y');
+      this.yPosition += 1;
     } else if (this.direction === 'E') {
-      !this.isAtBoundry('x') ? this.xPosition += 1 : this.sendBoundaryError('x');
+      this.xPosition += 1 ;
     } else if (this.direction === 'S') {
-      !this.isAtBoundry('y') ? this.yPosition -= 1 : this.sendBoundaryError('y');
+      this.yPosition -= 1 ;
     } else if (this.direction === 'W') {
-      !this.isAtBoundry('x') ? this.xPosition -= 1 : this.sendBoundaryError('x');
+      this.xPosition -= 1;
     }
   }
 
+  // need to refactor this so that the directions are better managed
   turnLeft() {
     if (this.direction === 'N') {
       this.direction = 'W';
