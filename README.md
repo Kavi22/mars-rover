@@ -62,7 +62,7 @@ It also verifies if movement is 'legal' before it is interpreted by the rover.
 
 Rover class interprets commands from Plateau and executes an action,  move forward or turn left/right. 
 
-Towards the end of my implementation, I realised that my design contained all the business logic in Plateau. In my model, Plateau was the higher level object which feeds information to rovers. Although this was how I intended for the program to work, I can see that I could have added a Controller class which would be responsible for giving the other classes instructions and feeding valid information. 
+Towards the end of my implementation, I realised that my design contained all the business logic in Plateau. In my model, Plateau was the higher level object which feeds information to rovers. Although this was how I intended for the program to work, I can see that with more time I could have added a Controller class which would be responsible for giving the other classes instructions and feeding valid information. 
 
 For example, moving the responsibility of creating a Rover class out of the Plateau class, and instead move that logic to the Controller, allowing for a better separation of concerns. In that way, each class could have been responsible for itself and not any others. 
 
