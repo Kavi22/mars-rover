@@ -27,19 +27,13 @@ describe('Rover', () => {
     });
   });
 
-  it('receives a set of commands and stores this on the rover', () => {
-    let rover1 = new Rover(1, 5, 'S');
-    rover1.saveCommands('LMLMLM');
-    expect(rover1.commands).to.equal('LMLMLM');
+  describe('saveCommands', () => {
+    it('receives a set of commands and stores this on the rover', () => {
+      let rover1 = new Rover(1, 5, 'S');
+      rover1.saveCommands('LMLMLM');
+      expect(rover1.commands).to.equal('LMLMLM');
+    });
   });
-
-  // it('Saves an error if invalid commmand is passed', () => {
-  //   let rover1 = new Rover(1, 5, 'S');
-  //   rover1.saveCommands('S');
-  //   rover1.moveOrTurn();
-  //   console.log(rover1.errors[0]);
-  //   // expect(rover1.errors[0]).to.equal('S');
-  // });
 
   describe('sets new co-ordinates when instructed to move', () => {
     it('increments Y position  if currently facing North', () => {
@@ -66,18 +60,6 @@ describe('Rover', () => {
       rover1.moveOrTurn();
       expect(rover1.xPosition).to.equal(3);
     });
-    // it('does not move if it hits boundary on y axis', () => {
-    //   let p = new Plateau(5,5);
-    //   p.addRover(1, 5, 'N');
-    //   p.sendCommands('M');
-    //   expect(p.rovers[0].errors.length).to.equal(1);
-    // });
-    // it('does not move if hits boundary on x axis', () => {
-    //   let p = new Plateau(5,5);
-    //   p.addRover(5, 1, 'S');
-    //   p.sendCommands('MM');
-    //   expect(p.rovers[0].errors.length).to.equal(1);
-    // });
   });
 
   describe('changes the rovers direction according to instruction', () => {

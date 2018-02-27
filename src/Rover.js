@@ -10,8 +10,7 @@ class Rover {
   saveCommands(commands) {
     this.commands = commands;
   }
-
-  // 
+ 
   moveOrTurn() {
     this.commands.split('').forEach(command => {
       if (command === 'M') {
