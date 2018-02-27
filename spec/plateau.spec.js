@@ -1,7 +1,6 @@
 const expect = require('chai').expect;
 const Plateau = require('../src/Plateau');
 const Rover = require('../src/Rover');
-// const sinon = require('sinon');
 
 describe('Plateau', () => {
   it('is a function ', () => {
@@ -62,17 +61,6 @@ describe('Plateau', () => {
     expect(plateau1.rovers[0].xPosition).to.equal(4);
     expect(plateau1.rovers[0].yPosition).to.equal(2);
     expect(plateau1.rovers[0].direction).to.equal('N');
-  });
-
-  it('prints out the final positions of all rovers', () => {
-    // const spy = sinon.spy(console.log);
-    let plateau1 = new Plateau(5, 5);
-    plateau1.addRover(1, 2, 'N');
-    plateau1.sendCommands('LMLMLMLMM');
-    plateau1.addRover(3,3,'E');
-    plateau1.sendCommands('MMRMMRMRRM');
-    plateau1.allRoverPositions;
-    // expect(spy.callCount).to.equal(2);
   });
 
 });

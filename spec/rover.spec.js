@@ -130,8 +130,8 @@ describe('Rover', () => {
     });
   });
 
-  describe('output', () => {
-    it('gets the correct current position of rover', () => {
+  describe('positions', () => {
+    it('gets the current position of rover', () => {
       let rover1 = new Rover(1, 2, 'N');
       rover1.saveCommands('LMLMLMLMM');
       rover1.moveOrTurn();
@@ -139,5 +139,4 @@ describe('Rover', () => {
       expect(result).to.eql([1, 3, 'N']);
     });
   });
-
 });

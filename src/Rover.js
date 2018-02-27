@@ -20,7 +20,6 @@ class Rover {
       } else if (command === 'R') {
         this.turnRight();
       } else {
-        console.log('InvalidCommand rover can not proceed!');
         let e = new Error ('Invalid command');
         e.command = command;
         e.name = 'InvalidCommand';
@@ -41,7 +40,6 @@ class Rover {
     }
   }
 
-  // need to refactor this so that the directions are better managed
   turnLeft() {
     if (this.direction === 'N') {
       this.direction = 'W';
