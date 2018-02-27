@@ -19,12 +19,7 @@ class Rover {
         this.turnLeft();
       } else if (command === 'R') {
         this.turnRight();
-      } else {
-        let e = new Error ('Invalid command');
-        e.command = command;
-        e.name = 'InvalidCommand';
-        throw e;
-      }
+      } 
     });
   }
 

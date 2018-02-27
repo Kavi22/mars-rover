@@ -47,20 +47,33 @@ describe('Plateau', () => {
     });
   });
 
-  it('sends the commands to the rover', () => {
-    let plateau1 = new Plateau(5, 5);
-    plateau1.addRover(2, 2, 'E');
-    plateau1.sendCommands('MMLRL');
-    expect(plateau1.rovers[0].commands).to.equal('MMLRL');
+  describe('sends commands to the rover', () => {
+    it('instructs the rover to carry out the commands', () => {
+      let plateau1 = new Plateau(5, 5);
+      plateau1.addRover(2, 2, 'E');
+      plateau1.sendCommands('MMLRL');
+      expect(plateau1.rovers[0].xPosition).to.equal(4);
+      expect(plateau1.rovers[0].yPosition).to.equal(2);
+      expect(plateau1.rovers[0].direction).to.equal('N');
+    });
   });
+  
+    describe('manages if commands are invalid',() => {
+      it('checkforInvalidCommands throws an error when passed invalid commands', () => {
+        let p = new Plateau(5,5);
+        let c = 'KT';
+        const throwErrorWithCommand = p.checkforInvalidCommands.bind(null,c);
+        expect(throwErrorWithCommand).to.throw('Contains Invalid commands');
+      });
 
-  it('instructs the rover to carry out the commands', () => {
-    let plateau1 = new Plateau(5, 5);
-    plateau1.addRover(2, 2, 'E');
-    plateau1.sendCommands('MMLRL');
-    expect(plateau1.rovers[0].xPosition).to.equal(4);
-    expect(plateau1.rovers[0].yPosition).to.equal(2);
-    expect(plateau1.rovers[0].direction).to.equal('N');
-  });
+      it('throws an error when passed invalid commands through sendCommands function', () => {
+        let p = new Plateau(5,5);
+        let c = 'MLP';
+        p.addRover(1,5);
+        p.sendCommands(c);
+        const throwErrorWithCommand = p.checkforInvalidCommands.bind(p,c);
+        expect(throwErrorWithCommand).to.throw('Contains Invalid commands');
+      });
+    });
 
 });
