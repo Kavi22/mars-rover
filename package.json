@@ -8,7 +8,7 @@
     "lint": "eslint ./ --fix",
     "posttest": "npm run lint",
     "precommit": "npm test",
-    "rover": "node app.js"
+    "mr": "node app.js"
   },
   "author": "",
   "license": "ISC",
