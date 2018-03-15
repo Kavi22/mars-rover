@@ -7,10 +7,6 @@ class Rover {
       this.commands = [],
       this.errors = [];
   }
-  // adds the commands to the rover
-  // saveCommands(commands) {
-  //   this.commands = commands;
-  // }
 
   moveOrTurn(command) {
     if (command === 'M') {

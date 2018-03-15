@@ -3,8 +3,8 @@ const Rover = require('./Rover');
 class Plateau {
   constructor(width, height) {
     this.width = width,
-      this.height = height,
-      this.rovers = [];
+    this.height = height,
+    this.rovers = [],
     this.errors = [];
   }
 

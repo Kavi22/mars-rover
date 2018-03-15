@@ -93,5 +93,4 @@ describe('Plateau', () => {
         expect(p.rovers[0].errors[0].name).to.equal('RoverOffPlateau');
       });
     });
-
 });
