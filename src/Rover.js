@@ -2,34 +2,33 @@ class Rover {
   // sets  the position and direction of the rover
   constructor(xPosition = 0, yPosition = 0, direction = 'N') {
     this.xPosition = xPosition,
-    this.yPosition = yPosition,
-    this.direction = direction;
-    this.errors = [];
+      this.yPosition = yPosition,
+      this.direction = direction,
+      this.commands = [],
+      this.errors = [];
   }
-// adds the commands to the rover
-  saveCommands(commands) {
-    this.commands = commands;
-  }
- 
-  moveOrTurn() {
-    this.commands.split('').forEach(command => {
-      if (command === 'M') {
-        this.move();
-      } else if (command === 'L') {
-        this.turnLeft();
-      } else if (command === 'R') {
-        this.turnRight();
-      } 
-    });
+  // adds the commands to the rover
+  // saveCommands(commands) {
+  //   this.commands = commands;
+  // }
+
+  moveOrTurn(command) {
+    if (command === 'M') {
+      this.move();
+    } else if (command === 'L') {
+      this.turnLeft();
+    } else if (command === 'R') {
+      this.turnRight();
+    }
   }
 
   move() {
     if (this.direction === 'N') {
       this.yPosition += 1;
     } else if (this.direction === 'E') {
-      this.xPosition += 1 ;
+      this.xPosition += 1;
     } else if (this.direction === 'S') {
-      this.yPosition -= 1 ;
+      this.yPosition -= 1;
     } else if (this.direction === 'W') {
       this.xPosition -= 1;
     }
