@@ -76,4 +76,22 @@ describe('Plateau', () => {
       });
     });
 
+    describe('manages if commands send rover off plateau boundry',() => {
+      it('checkRoverBoundry throws an error when rover co-ordinates are greater than the plateau', () => {
+        let p = new Plateau(5,5);
+        p.addRover(4,1,'N');
+        let res = p.sendCommands('MRMM');
+        expect(res).to.equal(false);
+        expect(p.rovers[0].errors[0].name).to.equal('RoverOffPlateau');
+      });
+
+      it('checkRoverBoundry throws an error when rover co-ordinates are greater than the plateau', () => {
+        let p = new Plateau(5,5);
+        p.addRover(1,1,'S');
+        let res = p.sendCommands('MM');
+        expect(res).to.equal(false);
+        expect(p.rovers[0].errors[0].name).to.equal('RoverOffPlateau');
+      });
+    });
+
 });
